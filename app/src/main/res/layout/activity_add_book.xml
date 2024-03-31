@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AddBookActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="250dp"
+                android:scaleType="fitXY"
+                android:onClick="resimSec"
+                android:id="@+id/ImageViewKitapResmi"
+                android:src="@drawable/img"
+                android:contentDescription="Kitap Resmi"
+                android:layout_height="300dp"/>
+
+            <EditText
+                android:layout_width="320dp"
+                android:id="@+id/editTextKitapAdi"
+                android:textAlignment="center"
+                android:layout_marginTop="50dp"
+                android:hint="Kitap İsmini Giriniz"
+                android:layout_height="60dp"/>
+
+
+            <EditText
+                android:layout_width="320dp"
+                android:id="@+id/editTextKitapYazari"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                android:hint="Kitap Yazarını Giriniz"
+                android:layout_height="60dp"/>
+
+
+            <EditText
+                android:layout_width="320dp"
+                android:id="@+id/editTextKitapOzeti"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                android:inputType="textMultiLine"
+                android:hint="Kitap Özetini Giriniz"
+                android:layout_height="100dp"/>
+
+
+
+            <Button
+                android:layout_width="250dp"
+                android:text="Kaydet"
+                android:onClick="kitapKaydet"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:background="@color/fistik"
+                android:textAllCaps="false"
+                android:id="@+id/addBookBtnEkle"
+                android:layout_height="60dp"/>
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+    
+</ScrollView>
