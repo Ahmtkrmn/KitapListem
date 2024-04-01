@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BenimKitapListem</string>
+    <string name="delete_button_description">Delete</string>
+
 </resources>

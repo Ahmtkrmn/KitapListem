@@ -25,6 +25,7 @@ import java.io.ByteArrayOutputStream;
 
 public class AddBookActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> resultLauncher;
+    private veriTabaniYardimcisi veritabaniYardimcisi;
 
 
     private EditText editTxtKitapAdi, editTxtKitapYazari, editTxtKitapOzeti;
@@ -37,6 +38,7 @@ public class AddBookActivity extends AppCompatActivity {
         editTxtKitapYazari = (EditText) findViewById(R.id.editTextKitapYazari);
         editTxtKitapOzeti = (EditText) findViewById(R.id.editTextKitapOzeti);
         imgKitapResim = (ImageView) findViewById(R.id.ImageViewKitapResmi);
+        veritabaniYardimcisi=new veriTabaniYardimcisi(this);
     }
 
 
@@ -47,6 +49,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         init(); //on ve arka ucu bagladik
         registerResult();//gerekli hazirliklarin yapilmasini saglar
+
 
 
 
@@ -64,24 +67,13 @@ public class AddBookActivity extends AppCompatActivity {
                         ByteArrayOutputStream outputStream= new ByteArrayOutputStream();
                         kucultulenResim=resimiKucult(secilenResim);
                         // Resmi sıkıştır ve byte dizisine dönüştür
-                        if (kucultulenResim.compress(Bitmap.CompressFormat.PNG, 75, outputStream)) { // sıkıştırma başarılıysa devam et
+                        if (kucultulenResim.compress(Bitmap.CompressFormat.PNG, 50, outputStream)) { // sıkıştırma başarılıysa devam et
                             byte[] kayitEdilecekResim = outputStream.toByteArray();
 
 
                             try {
-                                //id  tablonun her satırını benzersiz bir şekilde tanımlamak için kullanılan bir sütun adıdır, INTEGER bu verinin tipini belirtir
-                                SQLiteDatabase database=this.openOrCreateDatabase("Kitaplar",MODE_PRIVATE,null);  //veri tabanı olusturuldu
-                                database.execSQL("CREATE TABLE IF NOT EXISTS kitaplar(id INTEGER PRIMARY KEY,kitapAdi VARCHAR,kitapYazari VARCHAR,kitapOzeti,VARCHAR,kitapResim BLOB)"); //diyelimki bir veri ekledik her ekledigimiz veri index olarak 1,2,3 diyerek gider
-
-                                String sqlsorgusu="INSERT INTO kitaplar(kitapAdi ,kitapYazari ,kitapOzeti,kitapResim) VALUES(?,?,?,?)";
-                                SQLiteStatement statement=database.compileStatement(sqlsorgusu);
-                                //veri tabanına index olarak girdi alinir
-                                statement.bindString(1,kitapAdi);
-                                statement.bindString(2,kitapYazari);
-                                statement.bindString(3,kitapOzeti);
-                                statement.bindBlob(4,kayitEdilecekResim);
-                                statement.execute();
-
+                                //veritabanina veriTabaniYardimcisi class'i ile bir kitap ekleriz
+                                veritabaniYardimcisi.kitapEkle(kitapAdi,kitapYazari,kitapOzeti,kayitEdilecekResim);
                                 nesneleriTemizle(); //girilen alanları temizler
                                 showToast("Kitap Başarıyla Kaydedilmiştir");
 

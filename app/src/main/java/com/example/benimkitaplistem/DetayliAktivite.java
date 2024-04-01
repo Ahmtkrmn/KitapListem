@@ -6,12 +6,15 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetayliAktivite extends AppCompatActivity {
 
     private ImageView imgKitapResim;
+    private ImageButton deleteButton;
     private TextView txtKitapAdi,txtKitapYazari,txtKitapOzeti;
     private String kitapAdi,kitapYazari,kitapOzeti;
     private Bitmap kitapResim;
@@ -21,6 +24,7 @@ public class DetayliAktivite extends AppCompatActivity {
         txtKitapAdi=(TextView) findViewById(R.id.detayAktiviteKitapAdi);
         txtKitapYazari=(TextView) findViewById(R.id.detayAktiviteKitapYazari);
         txtKitapOzeti=(TextView) findViewById(R.id.detayAktiviteKitapOzeti);
+        deleteButton=(ImageButton)findViewById(R.id.deleteButton);
 
         kitapAdi=MainActivity.kitapDetayi.getKitapAdi();
         kitapYazari=MainActivity.kitapDetayi.getKitapYazari();
@@ -45,6 +49,27 @@ public class DetayliAktivite extends AppCompatActivity {
             System.out.println("Bir Hata Oluştu");
         }
 
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Silinecek kitabın ID'sini alın
+                String silinecekKitapAdi = MainActivity.kitapDetayi.getKitapAdi(); // Varsayılan olarak ID alındı, sizin uygulamanıza göre bu kısmı uyarlamanız gerekebilir
+
+                // Veritabanı yardımcısını oluştur
+                veriTabaniYardimcisi dbHelper = new veriTabaniYardimcisi(getApplicationContext());
+
+                // Kitabı sil
+                dbHelper.kitapSil(silinecekKitapAdi);
+
+
+
+            }
+        });
+
 
     }
+
+
+
 }

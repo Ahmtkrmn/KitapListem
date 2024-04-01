@@ -64,12 +64,12 @@ public class KitapAdapter extends RecyclerView.Adapter<KitapAdapter.KitapHolder>
             txtKitapOzeti=(TextView)itemView.findViewById(R.id.kitap_item_txtViewKitapOzeti);
             imgKitapResim=(ImageView) itemView.findViewById(R.id.kitap_item_imageView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {//Bu kod parçası, her bir kitap öğesine tıklama işlevselliğini ekler
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {//ogeye tıklandiginda cagrilan method
                     int position=getAdapterPosition();
                     if(listener!=null && position!=RecyclerView.NO_POSITION){
-                        listener.OnItemClick(kitaplist.get(position));
+                        listener.OnItemClick(kitaplist.get(position)); //secilen kitabin bilgilerini main aktiviteye gondermek icin interface gondeririz
                     }
                 }
             });
@@ -87,9 +87,10 @@ public class KitapAdapter extends RecyclerView.Adapter<KitapAdapter.KitapHolder>
     public interface OnItemClickListener{
         //Bu interface, tıklanabilir öğelerin dinlenmesini sağlar.
         //OnItemClick adında bir metod içerir. Bu metod, tıklanan öğeyi temsil eden bir Kitap nesnesini parametre olarak alır.
-        void OnItemClick(Kitap kitap);
+        void OnItemClick(Kitap kitap); //buradan main activiteye secilen adapter daki kitabın bilgilerini gondeririz
     }
 
+    // Tıklama dinleyicisini ayarlamak için metot
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener=listener;
     }

@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new KitapAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(Kitap kitap) {
+//adapterdaki tiklanan kitabin bilgileri aktarilir ardindan bunun icin bir sinif olusturulur ve bu sinif o bilgilerin detayliaktivitede yazmasini saglar
             kitapDetayi=new KitapDetayi(kitap.getKitapAdi(), kitap.getKitapYazari(), kitap.getKitapOzeti(), kitap.getKitapResim());
             Intent detayIntent=new Intent(MainActivity.this, DetayliAktivite.class);
             startActivity(detayIntent);
