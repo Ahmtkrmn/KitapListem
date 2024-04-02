@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId()==R.id.ad_book){ //eger + ikonuna bastiysa
             //Intent geçiş
             Intent addBookIntent=new Intent(this,AddBookActivity.class);//bu aktiviteden kitap ekleye gecisi saglar
+            overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
             startActivity(addBookIntent);
         }
         return super.onOptionsItemSelected(item);//Üst sınıfın (genellikle Activity) normal işlem akışını devam ettir.
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         // Buraya aktivitenin yeniden etkinleştirildiği zaman gerçekleştirilmesi gereken işlemler yazılır
         super.onResume();
-        adapter = new KitapAdapter(Kitap.getData(this), this);
+        adapter = new KitapAdapter(Kitap.getData(this), this);//kitaplistesindeki kitaplarin verilerini alir
         mRecyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new KitapAdapter.OnItemClickListener() {
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 //adapterdaki tiklanan kitabin bilgileri aktarilir ardindan bunun icin bir sinif olusturulur ve bu sinif o bilgilerin detayliaktivitede yazmasini saglar
             kitapDetayi=new KitapDetayi(kitap.getKitapAdi(), kitap.getKitapYazari(), kitap.getKitapOzeti(), kitap.getKitapResim());
             Intent detayIntent=new Intent(MainActivity.this, DetayliAktivite.class);
-            startActivity(detayIntent);
+                overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
+                startActivity(detayIntent);
             }
         });
     }
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.addItemDecoration(new GridManagerDecoration());
         //mRecyclerView.setAdapter(adapter): RecyclerView'a bir adaptör (KitapAdapter) atar, böylece kitap verileri görüntülenebilir hale gelir
         mRecyclerView.setAdapter(adapter);
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
 
 
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     private class GridManagerDecoration extends RecyclerView.ItemDecoration{ //kitaplar arasindaki bosluklarin buyuklugunu saglar
         @Override
         public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-            outRect.bottom=35;
+            outRect.bottom=15;
         }
     }
 }

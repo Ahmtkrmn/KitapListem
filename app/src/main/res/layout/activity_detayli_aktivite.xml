@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:padding="15dp"
-        android:background="@color/nane"
+        android:background="@color/fistik"
         android:layout_height="wrap_content">
 
         <ImageButton
@@ -29,113 +29,102 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_height="wrap_content">
-            
+            android:gravity="center"
+            android:orientation="vertical">
+
             <ImageView
-                android:layout_width="240dp"
                 android:id="@+id/detayAktiviteResim"
-                android:layout_height="300dp"/>
+                android:layout_width="240dp"
+                android:layout_height="300dp" />
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:padding="25dp"
-                android:layout_height="wrap_content">
-                
-                
+                android:orientation="horizontal"
+                android:padding="25dp">
+
+
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Kitap Adı : "
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
+                    android:textStyle="bold" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:id="@+id/detayAktiviteKitapAdi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
+                    android:textStyle="bold" />
 
 
-
-                
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:padding="25dp"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:padding="25dp">
 
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Kitap Yazarı : "
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
+                    android:textStyle="bold" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:id="@+id/detayAktiviteKitapYazari"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
-
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:padding="25dp"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:padding="25dp">
 
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Kitap Özeti : "
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
+                    android:textStyle="bold" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:id="@+id/detayAktiviteKitapOzeti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
-
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
-            
-            
-            
-            
+
+
         </LinearLayout>
 
 

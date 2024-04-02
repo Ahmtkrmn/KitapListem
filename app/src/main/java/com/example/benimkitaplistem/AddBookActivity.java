@@ -46,6 +46,7 @@ public class AddBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
 
         init(); //on ve arka ucu bagladik
         registerResult();//gerekli hazirliklarin yapilmasini saglar
@@ -153,11 +154,10 @@ private void registerResult() {
     // Kullanıcı bir resim seçtiğinde, bu seçilen resmin URI'si onActivityResult() yöntemine aktarılır ve orada işlenir.
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out); // Animasyon tanımla
 
-
-
-
-
-
-
+    }
 }

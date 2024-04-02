@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetayliAktivite extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class DetayliAktivite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detayli_aktivite);
         init();
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
 
         if(!TextUtils.isEmpty(kitapAdi) && !TextUtils.isEmpty(kitapYazari) && !TextUtils.isEmpty(kitapOzeti)){ // burası nın dogru olması kesin fakat RAM 'den dolayı veya herhangi bir ariza olursa diye
             txtKitapAdi.setText(kitapAdi);
@@ -58,6 +60,7 @@ public class DetayliAktivite extends AppCompatActivity {
 
                 // Veritabanı yardımcısını oluştur
                 veriTabaniYardimcisi dbHelper = new veriTabaniYardimcisi(getApplicationContext());
+                Toast.makeText(getApplicationContext(), "Kitap Başarıyla Silinmiştir", Toast.LENGTH_SHORT).show();
 
                 // Kitabı sil
                 dbHelper.kitapSil(silinecekKitapAdi);
@@ -69,6 +72,12 @@ public class DetayliAktivite extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out); // Geri dönüş animasyonu
+    }
+
 
 
 
